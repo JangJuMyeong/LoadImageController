@@ -9,11 +9,13 @@ import UIKit
 import Foundation
 
 class ImageInfo {
-    let image: UIImage? = nil
+    var image: UIImage? = nil
     let downloadUrl: URL?
+    let index: Int
     var downloaded = false
     
-    init(downloadUrl: URL?) {
+    init(downloadUrl: URL?, index: Int) {
         self.downloadUrl = downloadUrl
+        self.index = index
     }
 }

@@ -55,8 +55,14 @@
                                                                         </imageView>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PP-BR-qbP">
                                                                             <rect key="frame" x="269" y="47.333333333333329" width="83" height="34.333333333333329"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="83" id="SbT-ox-FJz"/>
+                                                                            </constraints>
                                                                             <state key="normal" title="Button"/>
                                                                             <buttonConfiguration key="configuration" style="filled" title="다운로드"/>
+                                                                            <connections>
+                                                                                <action selector="downloadButtonTapped:" destination="evB-Zt-ohC" eventType="touchUpInside" id="kxp-Ri-7IF"/>
+                                                                            </connections>
                                                                         </button>
                                                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="I8d-bc-GH2">
                                                                             <rect key="frame" x="100" y="62.666666666666657" width="159" height="4"/>
@@ -135,6 +141,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionViewHeight" destination="Q4l-VI-bH5" id="elL-ha-ZuX"/>
                         <outlet property="imageDownloadCollectionView" destination="gAB-aw-HER" id="u3W-JD-miY"/>
                     </connections>
                 </viewController>

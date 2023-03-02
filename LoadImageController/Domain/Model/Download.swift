@@ -16,6 +16,7 @@ class Download {
     
     
     
+    
     init(imageInfo: ImageInfo) {
       self.imageInfo = imageInfo
     }
