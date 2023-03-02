@@ -49,6 +49,7 @@ class LoadImageCell: UICollectionViewCell {
             progressView.progress = 1
         } else {
             imageView.image = UIImage(systemName: "photo.artframe")
+            downloadButton.setTitle("다운로드", for: .normal)
             progressView.progress = 0
         
         }
