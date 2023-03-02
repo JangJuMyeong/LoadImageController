@@ -10,30 +10,47 @@ import UIKit
 protocol LoadImageCellDelegate {
   func cancelTapped(_ cell: LoadImageCell)
   func downloadTapped(_ cell: LoadImageCell)
-  func pauseTapped(_ cell: LoadImageCell)
-  func resumeTapped(_ cell: LoadImageCell)
 }
 
 class LoadImageCell: UICollectionViewCell {
     
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var downloadButton: UIButton!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var downloadControllerView: UIStackView!
     
     var delegate: LoadImageCellDelegate?
 
-    func setUpCell(_ info: ImageInfo, isDownloaded: Bool) {
+    func setUpCell(_ info: ImageInfo, isDownloaded: Bool, download: Download?) {
         print(isDownloaded)
         if let image = info.image {
             imageView.image = image
         }
         
+
+        
+        if download != nil {
+            downloadControllerView.isHidden = false
+            statusLabel.isHidden = false
+            downloadButton.isHidden = true
+            statusLabel.text = "다운로드중..."
+        } else {
+            downloadControllerView.isHidden = true
+            statusLabel.isHidden = true
+            downloadButton.isHidden = false
+        }
+        
         if isDownloaded {
+            statusLabel.isHidden = false
+            statusLabel.text = "다운로드 완료"
+            downloadButton.isHidden = false
             downloadButton.setTitle("완료", for: .normal)
             progressView.progress = 1
         } else {
             imageView.image = UIImage(systemName: "photo.artframe")
             progressView.progress = 0
+        
         }
     }
     
@@ -42,18 +59,14 @@ class LoadImageCell: UICollectionViewCell {
     }
     
     @IBAction func downloadButtonTapped(_ sender: UIButton) {
-        if downloadButton.titleLabel?.text == "다운로드" || downloadButton.titleLabel?.text == "완료"{
-            print("잃시정지")
-            downloadButton.setTitle("일지정지", for: .normal)
-            imageView.image = UIImage(systemName: "photo.artframe")
-            progressView.progress = 0
-            delegate?.downloadTapped(self)
-        } else {
-            print("다운로드")
-            downloadButton.setTitle("다운로드", for: .normal)
-            delegate?.pauseTapped(self)
-        }
-        
+        downloadButton.isHidden = true
+        downloadControllerView.isHidden = false
+        imageView.image = UIImage(systemName: "photo.artframe")
+        progressView.progress = 0
+        delegate?.downloadTapped(self)
     }
     
+    @IBAction func cancleButtonTapped(_ sender: UIButton) {
+        delegate?.cancelTapped(self)
+    }
 }

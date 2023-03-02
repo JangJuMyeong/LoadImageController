@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -54,9 +55,9 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PP-BR-qbP">
-                                                                            <rect key="frame" x="269" y="47.333333333333329" width="83" height="34.333333333333329"/>
+                                                                            <rect key="frame" x="262" y="47.333333333333329" width="90" height="34.333333333333329"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="83" id="SbT-ox-FJz"/>
+                                                                                <constraint firstAttribute="width" constant="90" id="SbT-ox-FJz"/>
                                                                             </constraints>
                                                                             <state key="normal" title="Button"/>
                                                                             <buttonConfiguration key="configuration" style="filled" title="다운로드"/>
@@ -65,16 +66,42 @@
                                                                             </connections>
                                                                         </button>
                                                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="I8d-bc-GH2">
-                                                                            <rect key="frame" x="100" y="62.666666666666657" width="159" height="4"/>
+                                                                            <rect key="frame" x="100" y="62.666666666666657" width="152" height="4"/>
                                                                         </progressView>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1Jm-5x-vzd">
+                                                                            <rect key="frame" x="262" y="47.333333333333329" width="90" height="34.333333333333329"/>
+                                                                            <subviews>
+                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyj-ZY-W44">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="34.333333333333336"/>
+                                                                                    <state key="normal" title="Button"/>
+                                                                                    <buttonConfiguration key="configuration" style="filled" image="xmark.rectangle.fill" catalog="system"/>
+                                                                                    <connections>
+                                                                                        <action selector="cancleButtonTapped:" destination="evB-Zt-ohC" eventType="touchUpInside" id="Yfs-dj-4ok"/>
+                                                                                    </connections>
+                                                                                </button>
+                                                                            </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="90" id="b21-jT-ucz"/>
+                                                                            </constraints>
+                                                                        </stackView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading...." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1UF-5K-ONj">
+                                                                            <rect key="frame" x="132.33333333333334" y="71.666666666666671" width="87.666666666666657" height="14.333333333333329"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                     </subviews>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <constraints>
                                                                         <constraint firstItem="I8d-bc-GH2" firstAttribute="leading" secondItem="FlE-R9-C3s" secondAttribute="trailing" constant="10" id="6w9-RE-gkG"/>
+                                                                        <constraint firstItem="1UF-5K-ONj" firstAttribute="top" secondItem="I8d-bc-GH2" secondAttribute="bottom" constant="5" id="7LA-j4-0bw"/>
                                                                         <constraint firstAttribute="trailing" secondItem="8PP-BR-qbP" secondAttribute="trailing" constant="10" id="Bgh-LX-MUA"/>
+                                                                        <constraint firstItem="1Jm-5x-vzd" firstAttribute="leading" secondItem="8PP-BR-qbP" secondAttribute="leading" id="EwX-z1-wy2"/>
                                                                         <constraint firstItem="8PP-BR-qbP" firstAttribute="leading" secondItem="I8d-bc-GH2" secondAttribute="trailing" constant="10" id="HHE-9l-v7I"/>
                                                                         <constraint firstItem="I8d-bc-GH2" firstAttribute="centerY" secondItem="le5-TI-wXl" secondAttribute="centerY" id="Mf9-6a-hht"/>
+                                                                        <constraint firstItem="1UF-5K-ONj" firstAttribute="centerX" secondItem="I8d-bc-GH2" secondAttribute="centerX" id="PNf-yE-p7d"/>
                                                                         <constraint firstItem="FlE-R9-C3s" firstAttribute="leading" secondItem="le5-TI-wXl" secondAttribute="leading" constant="10" id="VjB-76-l6a"/>
+                                                                        <constraint firstItem="1Jm-5x-vzd" firstAttribute="centerY" secondItem="8PP-BR-qbP" secondAttribute="centerY" id="ifp-U9-duq"/>
                                                                         <constraint firstItem="FlE-R9-C3s" firstAttribute="centerY" secondItem="le5-TI-wXl" secondAttribute="centerY" id="oKn-y7-fhb"/>
                                                                         <constraint firstItem="8PP-BR-qbP" firstAttribute="centerY" secondItem="le5-TI-wXl" secondAttribute="centerY" id="qzU-3o-6AP"/>
                                                                     </constraints>
@@ -90,8 +117,10 @@
                                                         <size key="customSize" width="362" height="129"/>
                                                         <connections>
                                                             <outlet property="downloadButton" destination="8PP-BR-qbP" id="W1V-Rr-wQV"/>
+                                                            <outlet property="downloadControllerView" destination="1Jm-5x-vzd" id="JLx-Z5-CUX"/>
                                                             <outlet property="imageView" destination="FlE-R9-C3s" id="bQQ-jy-bn7"/>
                                                             <outlet property="progressView" destination="I8d-bc-GH2" id="rha-ck-eYM"/>
+                                                            <outlet property="statusLabel" destination="1UF-5K-ONj" id="3v3-VM-7I7"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -152,6 +181,7 @@
     </scenes>
     <resources>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
+        <image name="xmark.rectangle.fill" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

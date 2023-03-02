@@ -12,22 +12,15 @@ class LoadImageViewController: UIViewController {
     @IBOutlet weak var imageDownloadCollectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
-    private let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     private let downloadService = DownloadService()
     private let viewModel = LoadImageViewModel()
     
     private lazy var downloadsSession: URLSession = {
-        let configuration = URLSessionConfiguration.default
-        
-        return URLSession(configuration: configuration,
+        return URLSession(configuration: .default,
                           delegate: self,
                           delegateQueue: nil)
     }()
-    
-    private func localFilePath(for url: URL) -> URL {
-        return documentsPath.appendingPathComponent(url.lastPathComponent)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +74,7 @@ extension LoadImageViewController: UICollectionViewDataSource {
         let info = viewModel.imageData.value[indexPath.row]
         
         cell.delegate = self
-        cell.setUpCell(info, isDownloaded: info.downloaded)
+        cell.setUpCell(info, isDownloaded: info.downloaded, download: downloadService.activeDownloads[info.downloadUrl!])
         
         return cell
     }
@@ -113,24 +106,6 @@ extension LoadImageViewController: LoadImageCellDelegate {
             viewModel.downloadStart(index: indexPath.row)
         }
     }
-    
-    func pauseTapped(_ cell: LoadImageCell) {
-        if let indexPath = imageDownloadCollectionView.indexPath(for: cell) {
-            let imageInfo = viewModel.imageData.value[indexPath.row]
-            downloadService.pauseDownload(imageInfo)
-            viewModel.reloadData(indexPath.row)
-        }
-    }
-    
-    func resumeTapped(_ cell: LoadImageCell) {
-        if let indexPath = imageDownloadCollectionView.indexPath(for: cell) {
-            let imageInfo = viewModel.imageData.value[indexPath.row]
-            downloadService.resumeDownload(imageInfo)
-            viewModel.reloadData(indexPath.row)
-        }
-    }
-    
-    
 }
 
 extension LoadImageViewController: URLSessionDownloadDelegate {

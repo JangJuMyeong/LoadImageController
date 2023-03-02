@@ -26,6 +26,12 @@ final class LoadImageViewModel {
         reloadIndex.value = index
     }
     
+    func downloadCancel(index: Int) {
+        imageData.value[index].image = nil
+        imageData.value[index].downloaded = false
+        reloadIndex.value = index
+    }
+    
     func downloadStart(index: Int) {
         imageData.value[index].image = nil
         imageData.value[index].downloaded = false
